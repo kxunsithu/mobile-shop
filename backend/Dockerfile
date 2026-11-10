@@ -2,9 +2,9 @@ FROM php:8.3-cli
 
 # System dependencies (only what Laravel + PostgreSQL need)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    git unzip libpq-dev libzip-dev libicu-dev \
+    git unzip libpq-dev libzip-dev libicu-dev libonig-dev \
     && docker-php-ext-install -j$(nproc) \
-        pdo pdo_pgsql mbstring zip intl opcache \
+        pdo pdo_pgsql mbstring zip intl \
     && rm -rf /var/lib/apt/lists/*
 
 # Composer
